@@ -9,4 +9,28 @@
 			<result>/result.jsp</result>
 		</action>
 	</package>
+	
+	<package name="srcPackage1" namespace="/name1" extends="struts-default">
+		<action name="hello" class="srcPackage1.HelloWorldAction">
+			<result>/webhello1/result.jsp</result>
+		</action>
+	</package>
+	
+	<package name="srcPackage2" namespace="/name2" extends="struts-default">
+		<action name="hello" class="srcPackage2.HelloWorldAction">
+			<!--  <interceptor-ref name="params" /> -->
+			<result name="success">/webhello2/result.jsp</result>
+			<result name="input">/webhello2/hello.jsp</result>
+		</action>
+	</package>
+	
+	<package name="srcPackage3" namespace="/name3" extends="struts-default">
+		<action name="hello" class="srcPackage3.HelloWorldAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="workflow" />
+			<result name="input">/webhello3/hello.jsp</result>
+			<result name="success">/webhello3/result.jsp</result>
+		</action>
+	</package>
+ 
 </struts>
