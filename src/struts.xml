@@ -8,6 +8,7 @@
 		<interceptors>
 			<interceptor name="mytimer" class="interceptor.Timer" />
 			<interceptor name="loginDao" class="login3.interceptor.LoginDAOInterceptor" />
+			<interceptor name="fileUploadDAO" class="upload.interceptor.FileUploadDAOInterceptor" />
 		</interceptors>
 		<action name="hello" class="hello.HelloWorldAction">
 			<result>/result.jsp</result>
@@ -36,12 +37,13 @@
 			<interceptor-ref name="params" />
 			<result>/interceptor/result.jsp</result>
 		</action>
-		<action name="interceptorlogin1" class="login2.action.LoginAction">
+		<action name="interceptorlogin2" class="login3.action.LoginAction">
+			<interceptor-ref name="loginDao" />
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
-			<result>/interceptor/login/login_ok.jsp</result>
-			<result name="login">/interceptor/login/login.jsp</result>
+			<result>/interceptor/login2/login_ok.jsp</result>
+			<result name="login">/interceptor/login2/login.jsp</result>
 		</action>
 		<action name="interceptorlogin2" class="login3.action.LoginAction">
 			<interceptor-ref name="loginDao" />
@@ -50,6 +52,14 @@
 			<interceptor-ref name="params" />
 			<result>/interceptor/login2/login_ok.jsp</result>
 			<result name="login">/interceptor/login2/login.jsp</result>
+		</action>
+		<action name="fileupload" class="upload.action.FileUploadAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<interceptor-ref name="fileUploadDAO" />
+			<result>/interceptor/upload/upload_ok.jsp</result>			
 		</action>
 	</package>
 	
